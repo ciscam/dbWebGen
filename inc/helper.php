@@ -779,10 +779,6 @@ function html($text, $max_chars = 0, $expandable = false, $html_linebreaks = fal
 	$text = strval($text);
 	$len = mb_strlen($text);
 
-	// PHP lower than v5.4 do not have ENT_HTML401
-	if(!defined('ENT_HTML401'))
-		define('ENT_HTML401', 0);
-
 	if($max_chars > 0 && $len > $max_chars) {
 		$ret = $highlighter->highlight(htmlspecialchars(mb_substr($text, 0, $max_chars), ENT_COMPAT | ENT_HTML401));
 
@@ -849,7 +845,7 @@ class SearchResultHighlighter {
 		$this->term_to_highlight = $term_to_highlight;
 		$this->term_len = mb_strlen($this->term_to_highlight);
 		$this->ignorecase = $ignorecase;
-		if(self::$transliterator === null && $transliterator_rules !== '') // Transliterator only available PHP >= 5.4.0, PECL intl >= 2.0.0
+		if(self::$transliterator === null && $transliterator_rules !== '') // Transliterator requires PECL intl extension
 			self::$transliterator = class_exists('Transliterator') ? Transliterator::createFromRules($transliterator_rules) : null;
 	}
 

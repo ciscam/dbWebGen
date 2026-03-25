@@ -8,7 +8,7 @@ This PHP application automatically generates a responsive web app on top of your
 Developers may add custom functionality and extensions to the engine through hook functions in plugins, and admins may exploit an [extensive array of settings](settings.template.php) controlling the engine.
 
 ## Requirements
-* Webserver running PHP (lowest tested version is 5.3)
+* Webserver running PHP 8.0 or higher
 * Database server (currently working only with PostgreSQL -- lowest tested version is 9.2; experimental support for MySQL)
 * A database
 
