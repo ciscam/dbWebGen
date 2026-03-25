@@ -37,7 +37,7 @@ $.fn.extend({
 });
 
 //------------------------------------------------------------------------------------------
-$(window).load(function() {
+$(window).on('load', function() {
 //------------------------------------------------------------------------------------------
     set_logout_button_handler();
     init_file_selection_handler();
@@ -524,7 +524,7 @@ function set_create_new_handler() {
                 window.createNewPopupCount = 0;
             window.createNewPopupCount++;
             set_navigate_away_warning(true, false);
-            $(popupWindow).load(() => {
+            $(popupWindow).on('load', () => {
                 popupWindow.addEventListener('unload', event => {
                     console.log('Popup closed!');
                     if(--window.createNewPopupCount <= 0) {
