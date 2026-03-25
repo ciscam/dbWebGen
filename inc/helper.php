@@ -951,7 +951,7 @@ function prepare_field_display_val($table_name, &$table, &$record, &$field, $col
 						$disp .= $num;
 						break;
 					case ' ': $disp .= $flag; break;
-					case 'e'; $disp .= '&nbsp;';
+					case 'e': $disp .= '&nbsp;';
 				}
 			}
 			if($val >= 0 && isset($fmt['color_pos']))
