@@ -83,8 +83,8 @@ OPTIONS;
 		// override if additional scripts are needed for this type
 		public /*void*/ function add_required_scripts() {
 		//--------------------------------------------------------------------------------------
-			add_javascript(ENGINE_PATH_HTTP . 'node_modules/vis/dist/vis.min.js');
-			add_stylesheet(ENGINE_PATH_HTTP . 'node_modules/vis/dist/vis.min.css');
+			add_javascript(ENGINE_PATH_HTTP . 'node_modules/vis-network/standalone/umd/vis-network.min.js');
+			add_stylesheet(ENGINE_PATH_HTTP . 'node_modules/vis-network/styles/vis-network.min.css');
 			add_stylesheet(ENGINE_PATH_HTTP . 'node_modules/ionicons/css/ionicons.min.css');
 		}
 
