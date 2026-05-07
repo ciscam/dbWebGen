@@ -63,7 +63,7 @@
 			// which does not work e.g. for bar chart colors like { series: "0": {color:"black"} }
 			// -> so we support javascript object literals and do not use JSON decoding to PHP,
 			// although JSON will still work
-			$options_js = trim($this->page->get_post($this->ctrlname('additional_options_js')));
+			$options_js = trim($this->page->get_post($this->ctrlname('additional_options_js'), ''));
 			if($options_js !== '') {
 				return "$.extend(options, $options_js);" . PHP_EOL;
 			}
@@ -74,7 +74,7 @@
 		// any js to be rendered after the actual draw() call.
 		public function after_draw_js() {
 		//--------------------------------------------------------------------------------------
-			return trim($this->page->get_post($this->ctrlname('after_draw_js')));
+			return trim($this->page->get_post($this->ctrlname('after_draw_js'), ''));
 		}
 
 		//--------------------------------------------------------------------------------------

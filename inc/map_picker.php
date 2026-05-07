@@ -11,9 +11,8 @@
         add_stylesheet(ENGINE_PATH_HTTP . 'node_modules/leaflet/dist/leaflet.css');
         add_javascript(ENGINE_PATH_HTTP . 'node_modules/leaflet-draw/dist/leaflet.draw.js');
         add_stylesheet(ENGINE_PATH_HTTP . 'node_modules/leaflet-draw/dist/leaflet.draw.css');
-        add_javascript(ENGINE_PATH_HTTP . 'node_modules/terraformer/terraformer.min.js');
-        add_javascript(ENGINE_PATH_HTTP . 'node_modules/terraformer-wkt-parser/dist/terraformer-wkt-parser.min.js');
-        add_javascript(ENGINE_PATH_HTTP . 'node_modules/leaflet-omnivore/leaflet-omnivore.min.js');
+        add_javascript(ENGINE_PATH_HTTP . 'node_modules/@terraformer/wkt/dist/t-wkt.umd.js');
+        add_javascript(ENGINE_PATH_HTTP . 'node_modules/@mapbox/leaflet-omnivore/leaflet-omnivore.min.js');
 
         $cur_geom = '';
         if(isset($_REQUEST['val']) && trim($_REQUEST['val']) != '') {
@@ -88,7 +87,7 @@ HTML;
                         alert($msg_single_marker);
                         return;
                     }
-                    var wkt = Terraformer.WKT.convert(layers[0].toGeoJSON().geometry);
+                    var wkt = Terraformer.geojsonToWKT(layers[0].toGeoJSON().geometry);
                     transform_wkt(wkt, 4326, field_srid, function(wkt) {
                         var doc = $(window.opener.document);
                         doc.find('#{$_GET['ctrl_id']}').focus().val(wkt);
@@ -96,7 +95,7 @@ HTML;
                         window.close();
                     });
                 }
-                $(window).load(function() {
+                $(window).on('load', function() {
                     map = L.map('map_picker', $map_options);
                     $cur_geom
                     if(typeof map_picker_init_map === 'function')
